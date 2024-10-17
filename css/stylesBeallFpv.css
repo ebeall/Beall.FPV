@@ -1,0 +1,244 @@
+        :root {
+            --background-color: #333;
+            --container-bg-color: #000;
+            --navbar-bg-color: #222;
+            --imagens-drone-bg-color: rgba(0, 0, 0, 0.7);
+            --imagens-convencionais-bg-color: rgba(0, 0, 0, 0.6);
+            --edicao-video-bg-color: rgba(0, 0, 0, 0.5);
+            --text-color: #e0e0e0;
+            --navbar-link-color: #000;
+            --navbar-link-hover-color: #bb86fc;
+            --highlight-color: orange;
+            --global-left-margin: 2rem;
+            --global-right-margin: 2rem;
+            --section-height: 25rem;
+            --text-overlay-font-size: 3rem;
+            --logo-image-width: 10rem;
+            --dropshadow-distance: 5px;
+            --dropshadow-color: rgba(0, 0, 0, 0.5);
+            --dropshadow-blur: 10px;
+            --text-overlay-color: orange;
+            --text-overlay-hover-color: white;
+            --dropdown-bg-color: orange;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        .general-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            background-color: var(--container-bg-color);
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 1080px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--navbar-bg-color);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .navbar ul {
+            list-style: none;
+            display: none;
+            gap: 1rem;
+            margin: 0;
+            padding: 1rem;
+            flex-direction: column;
+            background-color: var(--dropdown-bg-color);
+            position: absolute;
+            top: 100%;
+            right: 0;
+            box-shadow: var(--dropshadow-distance) var(--dropshadow-distance) var(--dropshadow-blur) var(--dropshadow-color);
+            text-align: right;
+        }
+        .navbar ul.show {
+            display: block;
+        }
+        .navbar ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: var(--navbar-link-hover-color);
+        }
+        .menu-icon {
+            font-size: 2rem;
+            color: var(--navbar-link-color);
+            cursor: pointer;
+            margin-right: var(--global-right-margin);
+        }
+        .menu-icon:hover {
+            color: var(--highlight-color);
+        }
+        .about-section {
+            display: flex;
+            align-items: center;
+            margin: 0 var(--global-left-margin);
+            padding: 10px 0;
+        }
+        .about-section p {
+            font-size: 2.1875rem;
+            text-align: justify;
+        }
+        .what-we-do-section {
+            font-size: 3.4375rem;
+            text-align: left;
+            margin-left: var(--global-left-margin);
+            color: var(--highlight-color);
+        }
+        .imagens-drone-section, .imagens-convencionais-section, .edicao-video-section {
+            background-attachment: fixed;
+            background-size: cover;
+            height: var(--section-height);
+            width: 100%;
+            filter: brightness(50%);
+            transition: filter 0.3s;
+            position: relative;
+        }
+        .imagens-drone-section:hover, .imagens-convencionais-section:hover, .edicao-video-section:hover {
+            filter: brightness(100%);
+        }
+        .imagens-drone-section {
+            background-image: url('../images/static/imagensDrone_bg.png');
+            background-color: var(--imagens-drone-bg-color);
+        }
+        .imagens-convencionais-section {
+            background-image: url('../images/static/imagensCamera_bg.png');
+            background-color: var(--imagens-convencionais-bg-color);
+        }
+        .edicao-video-section {
+            background-image: url('../images/static/imagensEdicao_bg.png');
+            background-color: var(--edicao-video-bg-color);
+        }
+        .destaque-drone-section, .destaque-camera-section {
+            height: var(--section-height);
+            display: flex;
+            flex-direction: row;
+        }
+        .destaque-drone-text, .destaque-camera-text {
+            width: 33%;
+            padding: var(--global-left-margin);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--text-color);
+        }
+        .destaque-drone-video, .destaque-camera-video {
+            width: 67%;
+            position: relative;
+            overflow: hidden;
+        }
+        .destaque-drone-video video, .destaque-camera-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .text-overlay {
+            position: absolute;
+            bottom: 10px;
+            right: var(--global-right-margin);
+            color: var(--text-overlay-hover-color);
+            font-size: var(--text-overlay-font-size);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(-100px);
+            text-shadow: var(--dropshadow-distance) var(--dropshadow-distance) var(--dropshadow-blur) var(--dropshadow-color);
+            transition: color 0.3s;
+        }
+        .imagens-drone-section:hover .text-overlay,
+        .imagens-convencionais-section:hover .text-overlay,
+        .edicao-video-section:hover .text-overlay {
+            color: var(--text-overlay-color);
+        }
+        .social-media-section {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--highlight-color);
+        }
+        .social-media-section a {
+            margin: 0 1rem;
+            color: #000;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+        .social-media-section p {
+            color: #000;
+            font-weight: bold;
+        }
+        .social-media-section a:hover {
+            color: #fff;
+        }
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .about-section{
+                width: 100%;
+            }
+            .about-section p {
+                font-size: 1.5rem;
+                text-align: left;
+            }
+
+            .what-we-do-section {
+                font-size: 2.1875rem;
+                text-align: center;
+            }
+            .navbar ul {
+                position: static;
+                background-color: var(--navbar-bg-color);
+                box-shadow: none;
+                padding: 0;
+            }
+            .navbar ul li {
+                text-align: left;
+            }
+            .navbar {
+                padding: 0;
+            }
+            .menu-icon {
+                margin-right: 0;
+            }
+            .destaque-drone-section, .destaque-camera-section {
+                flex-direction: column;
+                height: auto;
+            }
+            .destaque-drone-text, .destaque-camera-text {
+                width: 100%;
+                padding: 0;
+            }
+            .destaque-camera-video, .destaque-drone-video {
+                width: 100%;
+                min-height: 20rem;
+            }
+            .text-overlay {
+                font-size: 1.5rem;
+                right: 1rem;
+            }
+        }
